@@ -24,8 +24,8 @@
 #define ADC_PASS 2
 #define ADC_AVERAGE 3
 
-#define AMP_STEP (0.05)
-#define AMP_MAX (2.55)
+#define AMP_STEP (0.005)
+#define AMP_MAX (7.000)
 
 // === threads
 
@@ -335,9 +335,9 @@ void *worker(void *arg)
 
 		han_amp = han_index * AMP_STEP;
 
-		if (han_amp < 0.02)
+		if (han_amp < 0.005)
 		{
-			han_amp = 0.01;
+			han_amp = 0.005;
 		}
 
 		if (han_amp > AMP_MAX)
@@ -477,7 +477,7 @@ void *worker(void *arg)
 
 	hantek_write(han_fd, "dds:switch 0");
 	hantek_write(han_fd, "dds:offset 0");
-	hantek_write(han_fd, "dds:amp 0.01");
+//	hantek_write(han_fd, "dds:amp 0.01");
 
 // fprintf(stderr, "8\n");
 
